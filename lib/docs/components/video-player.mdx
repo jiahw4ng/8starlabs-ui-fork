@@ -74,7 +74,8 @@ Wraps the player in context and handles the control overlay visibility logic.
 | `className` | `string`    | -        | Additional classes for the outer player container.             |
 | `children`  | `ReactNode` | Required | Player content, typically `VideoViewport` and `VideoControls`. |
 
-Also accepts standard `div` props.
+Also accepts standard `div` props. Mouse and focus handlers are composed with
+the internal control-visibility handlers.
 
 ### VideoViewport
 
@@ -85,7 +86,9 @@ Renders the underlying HTML5 `<video>` element and syncs playback state into the
 | `src`       | `string` | Required | Video source URL.                         |
 | `className` | `string` | -        | Additional classes for the video element. |
 
-Also accepts standard `video` props such as `poster`, `loop`, `muted`, `autoPlay`, and `controlsList`.
+Also accepts standard `video` props such as `poster`, `loop`, `muted`, `autoPlay`,
+and `controlsList`. Playback, loading, click, and error handlers are composed
+with the internal player handlers.
 
 ### VideoControls
 
@@ -96,7 +99,8 @@ Positions the custom controls in a bottom overlay that fades in on pointer movem
 | `className` | `string`    | -        | Additional classes for the controls wrapper.   |
 | `children`  | `ReactNode` | Required | Control elements to render inside the overlay. |
 
-Also accepts standard `div` props.
+Also accepts standard `div` props. Mouse enter and leave handlers are composed
+with the internal control-hover handlers.
 
 ### VideoPlayTrigger
 
@@ -112,9 +116,11 @@ Accepts standard `button` props on the mute trigger.
 
 ### VideoProgressBar
 
-Displays the current time, seek bar, and total duration. The seek bar supports hover preview and drag-to-seek interactions.
+Displays the current time, seek bar, and total duration. The seek bar supports
+hover preview, drag-to-seek interactions, and keyboard seeking with arrow keys,
+`Home`, and `End`.
 
-Accepts standard `div` props.
+Accepts standard `div` props for the outer progress bar wrapper.
 
 ### VideoPipTrigger
 
@@ -127,6 +133,15 @@ Accepts standard `button` props.
 Toggles fullscreen mode for the player container.
 
 Accepts standard `button` props.
+
+### useVideo
+
+Advanced hook for custom controls rendered inside `VideoRoot`.
+
+### VideoProvider
+
+Low-level context provider used by `VideoRoot`. Most consumers should use
+`VideoRoot` instead.
 
 ## Examples
 
@@ -162,5 +177,7 @@ Use the existing demo as the baseline example for the default control set:
 - Controls appear on mouse movement and hide automatically after a short delay when the pointer is not over the controls.
 - Clicking directly on the video toggles play and pause.
 - The progress bar pauses playback while dragging and resumes playback afterward if the video was already playing.
+- Keyboard users can seek with the progress bar focused, and can adjust the
+  expanded volume slider with arrow keys, `Home`, and `End`.
 - Picture-in-Picture support depends on the browser and platform.
 - All components support standard HTML attributes and `className` overrides.

@@ -8,10 +8,10 @@ import VideoRoot, {
   VideoPipTrigger
 } from "@/registry/8starlabs-ui/blocks/video-player";
 
-export default function VideoPlayerDemo() {
+export default function VideoPlayerHostedMp4Demo() {
   return (
     <VideoRoot className="rounded-lg">
-      <VideoViewport src="https://vjs.zencdn.net/v/oceans.mp4" />
+      <VideoViewport src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" />
 
       <VideoControls className="flex gap-4 items-center justify-between">
         <VideoPlayTrigger />
