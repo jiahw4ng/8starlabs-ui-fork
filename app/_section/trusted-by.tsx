@@ -29,18 +29,6 @@ const organizations: Organization[] = [
     className: "scale-75"
   },
   {
-    name: "Kurtosis Labs",
-    logo: "/images/kurtosis-labs_logo.png",
-    alt: "Kurtosis Labs Logo",
-    url: "https://kurtosis-labs.com",
-    utm: {
-      utm_source: "ui.8starlabs.com",
-      utm_medium: "referral",
-      utm_campaign: "8sl_ui_trusted_by"
-    },
-    className: "scale-75"
-  },
-  {
     name: "The Collective",
     logo: "/images/the-collective_logo.png",
     alt: "The Collective Logo",
